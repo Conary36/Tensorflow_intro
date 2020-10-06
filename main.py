@@ -2,6 +2,10 @@
 
 import tensorflow as tf
 import numpy as np
+import logging
+
+logger = tf.get_logger(
+logger.setLevel(logging.ERROR)
 
 
 # Press the green button in the gutter to run the script.
