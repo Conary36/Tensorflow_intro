@@ -35,14 +35,14 @@ Create the model
 Next, create the model. We will use the simplest possible model we can, a Dense network. 
 Since the problem is straightforward, this network will require only a single layer, with a single neuron.
 """
-l0 = tf.keras.layers.Dense(units=1, input_shape=[1])
+lO = tf.keras.layers.Dense(units=1, input_shape=[1])
 
 """
 Assemble layers into the model
 Then Compile the model, with loss and optimizer functions
 
 """
-model = tf.keras.Sequential([l0])
+model = tf.keras.Sequential([lO])
 model.compile(loss='mean_squared_error',
               optimizer=tf.keras.optimizers.Adam(0.1))
 """
@@ -50,8 +50,6 @@ Train Model
 """
 history = model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
 print("Finished training the model")
-
-
 
 plt.xlabel('Epoch Number')
 plt.ylabel("Loss Magnitude")
