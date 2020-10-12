@@ -33,8 +33,31 @@ Next, create the model. We will use the simplest possible model we can, a Dense 
 Since the problem is straightforward, this network will require only a single layer, with a single neuron.
 """
 10 = tf.keras.layers.Dense(units=1, input_shape=[1])
+
+"""
+Assemble layers into the model
+Then Compile the model, with loss and optimizer functions
+
+"""
+model = tf.keras.Sequential([10])
+model.compile(loss='mean_squared_error',
+              optimizer=tf.keras.optimizers.Adam(0.1))
+"""
+Train Model
+"""
+history = model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
+print("Finished training the model")
+
+import matplotlib.pyplot as plt
+plt.xlabel('Epoch Number')
+plt.ylabel("Loss Magnitude")
+plt.plot(history.history['loss'])
+
+print(model.predict([100.0]))
+print("These are the layer variables: {}".format(l0.get_weights()))
+
 # Press the green button in the gutter to run the script.
 # if __name__ == '__main__'
-    # print_hi('PyCharm')
+#     print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
