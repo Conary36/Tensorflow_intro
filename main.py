@@ -4,7 +4,9 @@
 import tensorflow as tf
 import numpy as np
 import logging
-
+import tensorflow as tf
+import numpy as np
+import logging
 # Display  only errors
 logger = tf.get_logger()
 logger.setLevel(logging.ERROR)
@@ -32,14 +34,14 @@ Create the model
 Next, create the model. We will use the simplest possible model we can, a Dense network. 
 Since the problem is straightforward, this network will require only a single layer, with a single neuron.
 """
-10 = tf.keras.layers.Dense(units=1, input_shape=[1])
+l0 = tf.keras.layers.Dense(units=1, input_shape=[1])
 
 """
 Assemble layers into the model
 Then Compile the model, with loss and optimizer functions
 
 """
-model = tf.keras.Sequential([10])
+model = tf.keras.Sequential([l0])
 model.compile(loss='mean_squared_error',
               optimizer=tf.keras.optimizers.Adam(0.1))
 """
@@ -57,7 +59,7 @@ print(model.predict([100.0]))
 print("These are the layer variables: {}".format(l0.get_weights()))
 
 # Press the green button in the gutter to run the script.
-# if __name__ == '__main__'
-#     print_hi('PyCharm')
+# if __name__ == '__main__':
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
