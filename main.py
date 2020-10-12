@@ -7,6 +7,8 @@ import logging
 import tensorflow as tf
 import numpy as np
 import logging
+import matplotlib.pyplot as plt
+
 # Display  only errors
 logger = tf.get_logger()
 logger.setLevel(logging.ERROR)
@@ -14,7 +16,6 @@ logger.setLevel(logging.ERROR)
 # Training data used to train model
 celsius_q = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)
 fahrenheit_a = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
-
 
 """
 - **Feature** — The input(s) to our model. In this case, a single value — the degrees in Celsius.
@@ -26,7 +27,7 @@ fahrenheit_a = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
 
 """
 # iteration of celsius will print the corresponding fahrenheit
-for i,c in enumerate(celsius_q):
+for i, c in enumerate(celsius_q):
     print("{} degrees Celsius = {} degrees Fahrenheit".format(c, fahrenheit_a[i]))
 
 """
@@ -50,7 +51,8 @@ Train Model
 history = model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
 print("Finished training the model")
 
-import matplotlib.pyplot as plt
+
+
 plt.xlabel('Epoch Number')
 plt.ylabel("Loss Magnitude")
 plt.plot(history.history['loss'])
