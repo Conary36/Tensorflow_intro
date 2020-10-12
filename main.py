@@ -35,16 +35,21 @@ Create the model
 Next, create the model. We will use the simplest possible model we can, a Dense network. 
 Since the problem is straightforward, this network will require only a single layer, with a single neuron.
 """
-lO = tf.keras.layers.Dense(units=1, input_shape=[1])
+l0 = tf.keras.layers.Dense(units=4, input_shape=[1])
+l1 = tf.keras.layers.Dense(units=4)
+l2 = tf.keras.layers.Dense(units=1)
 
 """
 Assemble layers into the model
 Then Compile the model, with loss and optimizer functions
 
 """
-model = tf.keras.Sequential([lO])
-model.compile(loss='mean_squared_error',
-              optimizer=tf.keras.optimizers.Adam(0.1))
+model = tf.keras.Sequential([l0, l1, l2])
+model.compile(loss='mean_squared_error', optimizer=tf.keras.optimizers.Adam(0.1))
+model.fit(celsius_q, fahrenheit_a, epochs=500, verbose=False)
+# model = tf.keras.Sequential([l0])
+# model.compile(loss='mean_squared_error',
+#               optimizer=tf.keras.optimizers.Adam(0.1))
 """
 Train Model
 """
@@ -57,6 +62,10 @@ plt.plot(history.history['loss'])
 
 print(model.predict([100.0]))
 print("These are the layer variables: {}".format(l0.get_weights()))
+print("Model predicts that 100 degrees Celsius is: {} degrees Fahrenheit".format(model.predict([100.0])))
+print("These are the l0 variables: {}".format(l0.get_weights()))
+print("These are the l1 variables: {}".format(l1.get_weights()))
+print("These are the l2 variables: {}".format(l2.get_weights()))
 
 # Press the green button in the gutter to run the script.
 # if __name__ == '__main__':
